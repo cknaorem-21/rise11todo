@@ -1,8 +1,10 @@
 import express from "express"
 import userRoutes from "./routes/userRoutes.js"
+import env from "./config/env.js"
 
 const app = express()
-const port = 5000
+const port = env.PORT || 5000
+
 
 app.use("/api/users", userRoutes)
 
