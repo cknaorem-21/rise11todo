@@ -1,10 +1,12 @@
 import express from "express"
 import userRoutes from "./routes/userRoutes.js"
 import env from "./config/env.js"
+import connectDB from "./config/connectDB.js"
 
 const app = express()
 const port = env.PORT || 5000
 
+connectDB()
 
 app.use("/api/users", userRoutes)
 
