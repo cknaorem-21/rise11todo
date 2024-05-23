@@ -7,10 +7,11 @@ import bodyParser from "body-parser"
 const app = express()
 const port = env.PORT || 5000
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
 connectDB()
+
+app.use(express.json({limit: "10kb"}));
+app.use(express.urlencoded({ extended: true, limit: "10kb" }));
+
 
 app.use("/api/users", userRoutes)
 
