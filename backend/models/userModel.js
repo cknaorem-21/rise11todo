@@ -5,6 +5,7 @@ import env from "../config/env.js"
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
+        unique: true,
         trim: true,
         required: [true, "Name field is required"],
     },
@@ -30,7 +31,8 @@ userSchema.methods.generateAccessToken = function () {
     return jwt.sign(
         {
             _id: this._id,
-            email: this.email
+            email: this.email,
+            username: this.username
         },
         env.ACCESS_TOKEN_SECRET,
         {
@@ -43,7 +45,8 @@ userSchema.methods.generateRefreshToken = function () {
     return jwt.sign(
         {
             _id: this._id,
-            email: this.email
+            email: this.email,
+            username: this.username
         },
         env.REFRESH_TOKEN_SECRET,
         {
