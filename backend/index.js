@@ -2,9 +2,13 @@ import express from "express"
 import userRoutes from "./routes/userRoutes.js"
 import env from "./config/env.js"
 import connectDB from "./config/connectDB.js"
+import bodyParser from "body-parser"
 
 const app = express()
 const port = env.PORT || 5000
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 connectDB()
 
