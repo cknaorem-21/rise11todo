@@ -6,10 +6,9 @@ import User from "../models/userModel.js"
 const authMiddleware = async (req, res, next) => {
     try {
         const token = req.cookies.accesstoken
-        // console.log("token", token)
 
         if(!token) {
-            throw new ApiError(401, "Unauthorised access")
+            throw new ApiError(401, "Unauthorised access 1")
         }
 
         const decoded = jwt.verify(token, env.ACCESS_TOKEN_SECRET)
@@ -18,7 +17,7 @@ const authMiddleware = async (req, res, next) => {
         const user = await User.findById(decoded._id).select("-password -refreshToken")
 
         if(!user) {
-            throw new ApiError(401, "Unauthorised access")
+            throw new ApiError(401, "Unauthorised access 2")
         }
 
         req.user = user

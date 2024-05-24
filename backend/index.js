@@ -5,11 +5,17 @@ import env from "./config/env.js"
 import connectDB from "./config/connectDB.js"
 import bodyParser from "body-parser"
 import cookieParser from "cookie-parser"
+import cors from "cors"
 
 const app = express()
 const port = env.PORT || 5000
 
 connectDB()
+
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  }))
 
 app.use(express.json({limit: "10kb"}))
 app.use(express.urlencoded({ extended: true, limit: "10kb" }))

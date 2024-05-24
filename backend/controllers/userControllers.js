@@ -71,7 +71,7 @@ const logInUser = async (req, res) => {
 
         const cookieOptions = {
             httpOnly: true,
-            secure:true
+            secure:true,
         }
 
         res
