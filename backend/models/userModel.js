@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
     refreshToken: {
         type: String,
     }
-})
+}, { timeStamps: true })
 
 userSchema.methods.generateAccessToken = function () {
     return jwt.sign(
