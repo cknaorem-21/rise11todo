@@ -10,16 +10,16 @@ const AddTodo = () => {
   });
 
   const submitHandler = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
       await axios.post(`${env.BASE_URL}/api/todos`, formData, {
         withCredentials: true,
       });
     } catch (error) {
-      console.log(err.message)
+      console.log(err.message);
     }
-  }
+  };
 
   return (
     <div className="bg-green-100 border border-gray-300 rounded-md p-2 pb-4">
@@ -52,6 +52,14 @@ const AddTodo = () => {
           ></textarea>
         </div>
 
+        <div>
+          <div>Priority</div>
+          <div>
+            <input type="checkbox" name="high"/> <label htmlFor="high">High</label> <br />
+            <input type="checkbox" name="medium" /> <label htmlFor="medium">Medium</label> <br />
+            <input type="checkbox" name="low" /> <label htmlFor="low">Low</label> <br />
+          </div>
+        </div>
         <div className="flex justify-center">
           <button
             type="submit"
